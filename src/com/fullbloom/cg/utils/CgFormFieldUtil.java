@@ -69,7 +69,9 @@ public class CgFormFieldUtil {
 	
 	public static void initShowType(CgFormFieldEntity cgFormFieldEntity){
 		
-		if(StringUtils.isEmpty(cgFormFieldEntity.getJavaFullType())) return ;
+		if(StringUtils.isEmpty(cgFormFieldEntity.getJavaFullType())) {
+			return ;
+		}
 		
 		if("Y".equals(cgFormFieldEntity.getIsShow()) && "Y".equals(cgFormFieldEntity.getIsShowList())){
 			
@@ -143,7 +145,10 @@ public class CgFormFieldUtil {
 				cgFormFieldEntity.setJavaFullType(enumJavaType.getFullname());
 			}
 		}
-		
+
+		System.out.println("cgFormFieldEntity.getJavaFullType():"+cgFormFieldEntity.getJavaName());
+		System.out.println("cgFormFieldEntity.getJavaFullType():"+cgFormFieldEntity.getDbName());
+		System.out.println("cgFormFieldEntity.getJavaFullType():"+cgFormFieldEntity.getJavaFullType());
 		String[] clzs = cgFormFieldEntity.getJavaFullType().split("\\.");
 		cgFormFieldEntity.setJavaType(clzs[(clzs.length-1)]);
 		cgFormFieldEntity.setJavaName(CodeStringUtils.formatField(cgFormFieldEntity.getDbName().toLowerCase()));	
